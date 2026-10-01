@@ -6,4 +6,4 @@ Unlike npm install resolves deps, update lock and install
 
 Lint Failure -Are all the vars are been used any syntax issues.
 
-I fixed the outdated dependency versions and regenerated the package-lock.json to keep it in sync with package.json. This resolved the `npm ci` dependency and ESLint issues in the CI pipeline.
+I fixed the outdated dependency versions and regenerated the package-lock.json to keep it in sync with package.json. This resolved the `npm ci` dependency in either debug.log/resolve-report.txt
