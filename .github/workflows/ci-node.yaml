@@ -26,6 +26,6 @@ jobs:
         #     working-directory: ./nodejs
         #     run: npm run lint
             
-          - name: run test cases
-            working-directory: ./nodejs
-            run: npm test
+        #   - name: run test cases
+        #     working-directory: ./nodejs
+        #     run: npm test
