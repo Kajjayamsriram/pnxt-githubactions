@@ -1,14 +1,37 @@
 const js = require("@eslint/js");
+const globals = require("globals");
 
 module.exports = [
   js.configs.recommended,
+
+  // Node.js files
   {
+    files: ["server.js", "src/**/*.js"],
     languageOptions: {
-      ecmaVersion: "latest",
+      globals: {
+        ...globals.node
+      },
       sourceType: "commonjs"
-    },
-    rules: {
-      "no-unused-vars": "warn"
+    }
+  },
+
+  // Browser files
+  {
+    files: ["public/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.browser
+      }
+    }
+  },
+
+  // Jest test files
+  {
+    files: ["tests/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
     }
   }
 ];
