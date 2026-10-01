@@ -2,9 +2,12 @@ const js = require("@eslint/js");
 const globals = require("globals");
 
 module.exports = [
+  {
+    ignores: ["eslint.config.js"]
+  },
+
   js.configs.recommended,
 
-  // Node.js files
   {
     files: ["server.js", "src/**/*.js"],
     languageOptions: {
@@ -15,7 +18,6 @@ module.exports = [
     }
   },
 
-  // Browser files
   {
     files: ["public/**/*.js"],
     languageOptions: {
@@ -25,7 +27,6 @@ module.exports = [
     }
   },
 
-  // Jest test files
   {
     files: ["tests/**/*.js"],
     languageOptions: {
