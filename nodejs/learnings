@@ -1,7 +1,7 @@
 npm install
 Note: For generating package-lock.json
 
-Also, npm ci rmeoves node_modules and perform clean install from exact dependency tree from package-lock.json
+Also, npm ci removes node_modules and perform clean install from exact dependency tree from package-lock.json
 Unlike npm install resolves deps, update lock and install
 
 Lint Failure -Are all the vars are been used any syntax issues.
