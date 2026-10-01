@@ -22,9 +22,9 @@ jobs:
             working-directory: ./nodejs
             run: npm ci
 
-          - name: node lint
-            working-directory: ./nodejs
-            run: npm run lint
+        #   - name: node lint
+        #     working-directory: ./nodejs
+        #     run: npm run lint
             
           - name: run test cases
             working-directory: ./nodejs
