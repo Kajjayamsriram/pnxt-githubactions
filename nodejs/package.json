@@ -1,0 +1,22 @@
+{
+  "name": "travel-booking-nodejs",
+  "version": "1.0.0",
+  "description": "Travel booking application built with Node.js and Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage --runInBand",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

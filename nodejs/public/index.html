@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TravelGo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>TravelGo</h1>
+
+    <nav>
+        <a href="#">Flights</a>
+        <a href="#">Hotels</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <h2>Book Flights & Hotels</h2>
+
+    <div class="search-box">
+
+        <input
+            id="from"
+            placeholder="From - Hyderabad">
+
+        <input
+            id="to"
+            placeholder="To - Delhi">
+
+        <button onclick="searchFlights()">
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+<section class="results">
+
+    <h2>Flights</h2>
+
+    <div id="flightResults"></div>
+
+</section>
+
+<section class="results">
+
+    <h2>Hotels</h2>
+
+    <button onclick="loadHotels()">
+        Show Hotels
+    </button>
+
+    <div id="hotelResults"></div>
+
+</section>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+name: ci node
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    checkout-job:
+        runs-on: ubuntu-slim
+        steps:
+          - name: code checkout
+            uses: actions/checkout@v4
+        
+          - name: build node
+            uses: actions/setup-node@v7
+            with:
+                node-version: 24
+                package-manager-cache: true 
+
+          - name: install deps
+            working-directory: ./nodejs
+            run: npm ci
+
+          - name: node lint
+            working-directory: ./nodejs
+            run: npm run lint
+            
+          - name: run test cases
+            working-directory: ./nodejs
+            run: npm test
