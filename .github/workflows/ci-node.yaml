@@ -7,12 +7,13 @@ on:
 
 jobs:
     checkout-job:
+        if: github.ref == 'ref/heads/main' && github.event_name == 'push'
         # runs-on: ubuntu-slim
         runs-on: ${{ matrix.os }}
         #deafult to nodejs directory to avoid repetitive declaration
         strategy:
           matrix:
-            os: [ubunut-slim, windows-latest]
+            os: [ubuntu-slim, windows-latest]
             node-version: [18, 19, 20]
 
         timeout-minutes: 5
