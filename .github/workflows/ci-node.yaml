@@ -7,17 +7,22 @@ on:
 
 jobs:
     checkout-job:
-        runs-on: ubuntu-slim
+        runs-on: ubuntu-latest
+        #deafult to nodejs directory to avoid repetitive declaration
+        defaults:
+          run:
+            working-directory: ./nodejs
+
         steps:
           - name: code checkout
             uses: actions/checkout@v4
         
           - name: build node
-            uses: actions/setup-node@v7
+            uses: actions/setup-node@v4
             with:
-                node-version: 24
+                node-version: 22
                 cache: 'npm'
-                cache-dependency-path: './nodejs/package-lock.json'
+                cache-dependency-path: 'package-lock.json'
 
           # - name: cache dependencies
           #   id: react-cache
@@ -30,19 +35,19 @@ jobs:
 
           - name: install deps
             # if: steps.react-cache.outputs.cache-hit != 'true'
-            working-directory: ./nodejs
+            # working-directory: ./nodejs
             run: npm ci
 
           - name: node lint
-            working-directory: ./nodejs
+            # working-directory: ./nodejs
             run: npm run lint
             
           - name: run test cases
-            working-directory: ./nodejs
+            # working-directory: ./nodejs
             run: echo "performed tets cases"
 
           - name: build react app
-            working-directory: ./nodejs
+            # working-directory: ./nodejs
             run: npm run build
 
           - name: upload artifact
