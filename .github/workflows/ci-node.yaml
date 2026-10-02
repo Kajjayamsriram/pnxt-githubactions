@@ -31,7 +31,7 @@ jobs:
             with:
                 node-version: 22
                 cache: 'npm'
-                # cache-dependency-path: './nodejs/package-lock.json'
+                dependency-path: './nodejs/package-lock.json'
 
           - name: cache dependencies
             id: react-cache
