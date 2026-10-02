@@ -8,5 +8,8 @@ Lint Failure -Are all the vars are been used any syntax issues.
 
 I fixed the outdated dependency versions and regenerated the package-lock.json to keep it in sync with package.json. This resolved the `npm ci` dependency in either debug.log/resolve-report.txt
 ------
-I have learned the cache action only caches the file path and lockfile hash, 
-where `cache: node` does same thing and can handle cache for different os.
+I have fixed the issue of eslint not exist error by,
+npm ci to re-use cached packages(from ~/.npm) to install dependencies in node_modules
+Note: Occured cause I tried to skip the npm ci with(cache-hit != 'true')
+
+While working with dependabot don't merge PR without developer cause other dependencies might won't support with new version suggestion
