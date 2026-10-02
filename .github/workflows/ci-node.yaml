@@ -18,6 +18,14 @@ jobs:
                 node-version: 24
                 package-manager-cache: true 
 
+          - name: cache dependencies
+            uses: actions/cache@v6
+            with:
+              path: ~/.npm            
+              key: ${{ runner.os }}-artifact-${{ hashFiles('**/package-lock.json') }}
+              restore-keys: |
+                ${{ runner.os }}-aritifact-
+
           - name: install deps
             working-directory: ./nodejs
             run: npm ci
