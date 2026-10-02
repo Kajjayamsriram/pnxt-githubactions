@@ -1,0 +1,9 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/nodejs"
+    schedule:
+      interval: "cron"
+      cronjob: "15 3 * * *"
+      timezone: "Asia/Kolkata"
