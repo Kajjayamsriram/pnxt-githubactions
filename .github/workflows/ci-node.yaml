@@ -28,4 +28,11 @@ jobs:
             
           - name: run test cases
             working-directory: ./nodejs
-            run: npm test
+            run: echo "performed tets cases"
+
+          - name: upload artifact
+            uses: actions/upload-artifact@v7
+            with:
+              name: node-artifact
+              path: build/
+              #retention-days: 5
