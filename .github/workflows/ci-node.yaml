@@ -30,6 +30,10 @@ jobs:
             working-directory: ./nodejs
             run: echo "performed tets cases"
 
+          - name: build react app
+            working-directory: ./nodejs
+            run: npm run build
+
           - name: upload artifact
             uses: actions/upload-artifact@v7
             with:
