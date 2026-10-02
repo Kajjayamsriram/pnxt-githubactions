@@ -7,11 +7,19 @@ on:
 
 jobs:
     checkout-job:
-        runs-on: ubuntu-slim
+        # runs-on: ubuntu-slim
+        runs-on: ${{ matrix.os }}
         #deafult to nodejs directory to avoid repetitive declaration
+        strategy:
+          matrix:
+            os: [ubunut-slim, windows-latest]
+            node-version: [18, 19, 20]
+
+        timeout-minutes: 5
         defaults:
           run:
             working-directory: ./nodejs
+            shell: bash
 
         steps:
           - name: code checkout
