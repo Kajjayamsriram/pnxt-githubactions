@@ -31,19 +31,19 @@ jobs:
             with:
                 node-version: 22
                 cache: 'npm'
-                dependency-path: './nodejs/package-lock.json'
+                cache-dependency-path: './nodejs/package-lock.json'
 
-          - name: cache dependencies
-            id: react-cache
-            uses: actions/cache@v6
-            with:
-              path: ~/.npm            
-              key: ${{ runner.os }}-artifact-${{ hashFiles('**/package-lock.json') }}
-              restore-keys: |
-                ${{ runner.os }}-aritifact-
+          # - name: cache dependencies
+          #   id: react-cache
+          #   uses: actions/cache@v6
+          #   with:
+          #     path: ~/.npm            
+          #     key: ${{ runner.os }}-artifact-${{ hashFiles('**/package-lock.json') }}
+          #     restore-keys: |
+          #       ${{ runner.os }}-aritifact-
 
           - name: install deps
-            if: steps.react-cache.outputs.cache-hit != 'true'
+            # if: steps.react-cache.outputs.cache-hit != 'true'
             # working-directory: ./nodejs
             run: npm ci
 
