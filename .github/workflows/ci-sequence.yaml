@@ -7,6 +7,9 @@ on:
 jobs:
     lint-job:
         runs-on: "ubuntu-slim"
+        strategy:
+            matrix:
+                language: [javascript-typescript]
         defaults:
             run:
                 working-directory: ./nodejs
