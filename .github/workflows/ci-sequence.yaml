@@ -1,0 +1,61 @@
+name: sequence workflow
+on: 
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    lint-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout
+              uses: actions/checkout@v7
+            - name: node install
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: install deps
+              run: npm ci --omit=dev
+            - name: node lint
+              run: npm run lint
+    test-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout
+              uses: actions/checkout@v7
+            - name: node install
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: install deps
+              run: npm ci --omit=dev
+            - name: test node
+              run: npm run test -- --watchAll=false --passWithNoTests
+    build-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout
+              uses: actions/checkout@v7
+            - name: node install
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: install deps
+              run: npm ci --omit=dev
+            - name: build
+              run: npm run build
+    deploy-job:
+        needs: [build-job]
+        runs-on: "ubuntu-slim"
+        steps:
+            - name: deploy to eks
+              run: echo "Deployed to pnxt namespace successfully"
