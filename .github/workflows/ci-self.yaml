@@ -4,7 +4,7 @@ on:
 
 jobs:
     checkout-job:
-        runs-on: "ubuntu-slim"
+        runs-on: "platformeng-01" #self-hosted runner label(runner-name: prod-action-platformeng-01)
         permissions:
             security-events: write #to upload security-analysis results to GitHub
             # packages: read #Download/read GitHub Packages
