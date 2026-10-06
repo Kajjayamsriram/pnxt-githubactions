@@ -1,0 +1,46 @@
+name: sequence workflow
+on: 
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    lint-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout
+              uses: actions/checkout@7
+            - name: node lint
+              run: npm run lint
+    test-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout
+              uses: actions/checkout@7
+            - name: test node
+              run: npm run test
+    build-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout
+              uses: actions/checkout@7
+            - name: build
+              run: npm run build
+    deploy-job:
+        needs: [build-job]
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: deploy to eks
+              run: echo "Deployed to pnxt namespace sucessfully"
