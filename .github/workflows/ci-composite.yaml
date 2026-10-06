@@ -2,7 +2,7 @@ name: Build node app
 on: 
     push:
         branches:
-            - main
+            - qa
 
 jobs:
     nodeapp-job:
@@ -14,6 +14,11 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v7
 
+            - name: codeql intialize
+              uses: github/codeql-action/init@v3
+              with:
+                languages: ${{ matrix.language}}
+                
             - name: build app
               uses: ./.github/actions/build
 

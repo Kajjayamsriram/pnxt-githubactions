@@ -1,0 +1,32 @@
+name: resuable build with composite
+on: 
+    workflow_call:
+
+jobs:
+    node-build:
+        runs-on: "ubuntu-slim"
+        strategy:
+            matrix:
+                language: [javascript-typescript]
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v7
+            
+            - name: codeql intialize
+              uses: github/codeql-action/init@v3
+              with:
+                languages: ${{ matrix.language}}            
+            
+            - name: build app
+              uses: ./.github/actions/build
+
+            - name: codeql analyze
+              uses: github/codeql-action/analyze@v3
+              with:
+                category: "/language:${{matrix.language}}"
+            
+            - name: deploy
+              uses: ./.github/actions/deploy

@@ -1,0 +1,9 @@
+name: node with resuable wf
+on: 
+    push:
+        branches:
+            - main
+
+jobs:
+    nodebuild-job:
+        uses: ./.github/workflows/reusable-build.yaml
