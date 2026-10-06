@@ -5,6 +5,8 @@ on:
 jobs:
     node-build:
         runs-on: "ubuntu-slim"
+        permissions:
+            security-events: write
         strategy:
             matrix:
                 language: [javascript-typescript]
