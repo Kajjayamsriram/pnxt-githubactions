@@ -12,7 +12,7 @@ jobs:
                 working-directory: ./nodejs
         steps:
             - name: checkout
-              uses: actions/checkout@7
+              uses: actions/checkout@v7
             - name: node lint
               run: npm run lint
     test-job:
@@ -22,7 +22,7 @@ jobs:
                 working-directory: ./nodejs
         steps:
             - name: checkout
-              uses: actions/checkout@7
+              uses: actions/checkout@v7
             - name: test node
               run: npm run test
     build-job:
@@ -32,7 +32,7 @@ jobs:
                 working-directory: ./nodejs
         steps:
             - name: checkout
-              uses: actions/checkout@7
+              uses: actions/checkout@v7
             - name: build
               run: npm run build
     deploy-job:
