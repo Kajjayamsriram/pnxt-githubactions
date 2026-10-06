@@ -8,7 +8,7 @@ jobs:
         permissions:
             security-events: write #to upload security-analysis results to GitHub
             # packages: read #Download/read GitHub Packages
-            # contents: read #Read private repository code / checkout
+            contents: read #Read private repository code / checkout
         strategy: 
             matrix:
                 language: [javascript-typescript] 
