@@ -1,0 +1,9 @@
+name: Deploy Application
+description: deploying app on to a cluster
+
+runs:
+  using: composite
+  steps:
+    - name: deploy Application
+      run: echo "deploying to prod ns"
+      shell: bash
