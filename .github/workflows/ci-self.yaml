@@ -25,17 +25,12 @@ jobs:
               uses: github/codeql-action/init@v3
               with:
                 languages: ${{ matrix.language}}
-            - name: codeql auto-build 
-              uses: github/codeql-action/autobuild@v3
-            - name: codeql analyze
-              uses: github/codeql-action/analyze@v3
-              with:
-                category: "/language:${{matrix.language}}"
 
-            - name: node install
+            - name: node install(cql build)
               uses: actions/setup-node@v4
               with:
                 node-version: 20
+
             - name: cache deps
               uses: actions/cache@v6
               with: 
@@ -43,9 +38,19 @@ jobs:
                 key: ${{runner.os}}-build-${{hashFiles('nodejs/package-lock.json')}}
                 restore-keys: |
                     ${{runner.os}}-build-
+            
+            # - name: codeql auto-build 
+            #   uses: github/codeql-action/autobuild@v3 #ignored cause of custom build
             - name: install deps
               run: npm ci --omit=dev
+
             - name: node lint check
               run: npm run lint
+
             - name: node build
               run: npm run build
+
+            - name: codeql analyze
+              uses: github/codeql-action/analyze@v3
+              with:
+                category: "/language:${{matrix.language}}"
