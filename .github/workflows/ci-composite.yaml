@@ -5,7 +5,7 @@ on:
             - main
 
 jobs:
-    build-job:
+    nodeapp-job:
         runs-on: "ubuntu-slim"
         # defaults:
         #     run:
