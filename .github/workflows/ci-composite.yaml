@@ -1,0 +1,21 @@
+name: Build node app
+on: 
+    push:
+        branches:
+            - main
+
+jobs:
+    build-job:
+        runs-on: "ubuntu-slim"
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v7
+              
+            - name: build app
+              uses: ./.github/actions/build
+
+            - name: deploy
+              run: echo "deploy to prod ns"
