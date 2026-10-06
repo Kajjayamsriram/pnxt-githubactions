@@ -2,7 +2,7 @@ name: ci node
 on:
     push:
         branches:
-            - main
+            - qa
     workflow_dispatch:
 
 jobs:
@@ -53,7 +53,7 @@ jobs:
             
           - name: run test cases
             # working-directory: ./nodejs
-            run: echo "performed tets cases"
+            run: echo "performed test cases"
 
           - name: build react app
             # working-directory: ./nodejs

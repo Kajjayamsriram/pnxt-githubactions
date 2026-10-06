@@ -1,0 +1,50 @@
+name: CQL and Self
+on:
+    push:
+
+jobs:
+    checkout-job:
+        runs-on: "ubuntu-slim"
+        permissions:
+            security-events: write #to upload security-analysis results to GitHub
+            # packages: read #Download/read GitHub Packages
+            # contents: read #Read private repository code / checkout
+        strategy: 
+            matrix:
+                language: [javascript-typescript] 
+        defaults:
+            run:
+                working-directory: ./nodejs
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v7
+
+              #codeQL lifecycle init>build>analyze
+            - name: codeql intialize
+              uses: github/codeql-action/init@v3
+              with:
+                languages: ${{ matrix.language}}
+            - name: codeql auto-build 
+              uses: github/codeql-action/autobuild@v3
+            - name: codeql analyze
+              uses: github/codeql-action/analyze@v3
+              with:
+                category: "/language:${{matrix.language}}"
+
+            - name: node install
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: cache deps
+              uses: actions/cache@v6
+              with: 
+                path: ~/.npm
+                key: ${{runner.os}}-build-${{hashFiles('nodejs/package-lock.json')}}
+                restore-keys: |
+                    ${{runner.os}}-build-
+            - name: install deps
+              run: npm ci --omit=dev
+            - name: node lint check
+              run: npm run lint
+            - name: node build
+              run: npm run build
