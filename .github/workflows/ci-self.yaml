@@ -9,6 +9,7 @@ jobs:
             security-events: write #to upload security-analysis results to GitHub
             # packages: read #Download/read GitHub Packages
             contents: read #Read private repository code / checkout
+            actions: read #lets CodeQL(analyze) read information about the current GitHub Actions workflow run
         strategy: 
             matrix:
                 language: [javascript-typescript] 

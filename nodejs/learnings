@@ -13,3 +13,8 @@ npm ci to re-use cached packages(from ~/.npm) to install dependencies in node_mo
 Note: Occured cause I tried to skip the npm ci with(cache-hit != 'true')
 
 While working with dependabot don't merge PR without developer cause other dependencies might won't support with new version suggestion
+
+---
+(ci-self.yaml)
+Workflow failed as I missed to pass - contents: read, actions: read
+If you define a permissions: block, explicitly grant every permission your workflow needs. If you don't define one, GitHub applies the configured default permissions(none).
