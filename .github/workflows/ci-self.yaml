@@ -1,6 +1,8 @@
 name: CQL and Self
 on:
     push:
+        branches:
+            - qa
 
 jobs:
     checkout-job:
