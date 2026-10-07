@@ -1,10 +1,28 @@
-name: concurrent outputs
+name: concurrent input/outputs
 
 on:
     push:
     pull_request:
         branches:
             - main
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Which environment?'
+                required: true
+                default: 'develop'
+                type: choice
+                options:
+                    - develop
+                    - preprod
+                    - prod
+            run_tests:
+                description: 'want to run tests?'
+                required: false
+                default: true
+                type: boolean
+
+
 concurrency: #stops running parallel workflows and new-job wait to finish-old
   group: main-deploy
   cancel-in-progress: false
