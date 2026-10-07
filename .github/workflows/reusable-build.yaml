@@ -5,8 +5,8 @@ on:
 jobs:
     node-build:
         runs-on: "ubuntu-slim"
-        permissions:
-            security-events: write
+        # permissions:
+        #     security-events: write #Required in resuable-main.yaml 
         strategy:
             matrix:
                 language: [javascript-typescript]

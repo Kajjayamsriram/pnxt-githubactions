@@ -3,7 +3,8 @@ on:
     push:
         branches:
             - main
-
+permissions:
+  security-events: write
 jobs:
     nodebuild-job:
         uses: ./.github/workflows/reusable-build.yaml
