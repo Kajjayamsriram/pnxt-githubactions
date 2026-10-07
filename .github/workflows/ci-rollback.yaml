@@ -1,7 +1,9 @@
 name: rollback deploy(on failure)
 
 on: 
-    push
+    push:
+        branches:
+            - qa
 jobs:
     deploy-job:
         runs-on: "ubuntu-slim"

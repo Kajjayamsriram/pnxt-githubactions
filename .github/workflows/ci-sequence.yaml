@@ -2,7 +2,7 @@ name: sequence workflow
 on: 
     pull_request:
         branches:
-            - main
+            - qa
 
 jobs:
     lint-job:
