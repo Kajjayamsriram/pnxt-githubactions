@@ -19,12 +19,9 @@ jobs:
               run: echo "tag=v1.2" >> "$GITHUB_OUTPUT"
             
             - run: echo "Building myapp:${{ steps.tag-id.outputs.tag }}"
-            - run: sleep 30
+            - run: sleep 60
     deploy-job:
         needs: build-job
         runs-on: ubuntu-slim
         steps:
             - run: echo "Deploying myapp:${{ needs.build-job.outputs.tag }}" 
-
-
-
