@@ -1,6 +1,7 @@
 name: concurrent output
 
 on:
+    push:
     pull_request:
         branches:
             - main
