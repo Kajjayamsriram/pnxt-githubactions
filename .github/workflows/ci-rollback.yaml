@@ -7,7 +7,7 @@ jobs:
         runs-on: "ubuntu-slim"
         steps:
             - name: deploying app
-              run: echo "deploying.." || false
+              run: echo "deploying.." && false
             - name: rollback deployment
               if: failure()
               run: echo "rollback is failed"
