@@ -2,9 +2,10 @@ name: concurrent output
 
 on:
     push:
+    pull_request:
         branches:
             - main
-concurrency:
+concurrency: #stops running parallel workflows and new-job wait to finish-old
   group: main-deploy
   cancel-in-progress: false
 
@@ -12,7 +13,7 @@ jobs:
     build-job: 
         runs-on: ubuntu-slim
         outputs:
-            tag: ${{ steps.tag-id.outputs.tag}}
+            tag: ${{ steps.tag-id.outputs.tag}} #passes output of one job to another
         steps:
             - id: tag-id
               run: echo "tag=v1.2" >> "$GITHUB_OUTPUT"
