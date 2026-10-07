@@ -1,4 +1,4 @@
-name: concurrent output
+name: concurrent outputs
 
 on:
     push:
