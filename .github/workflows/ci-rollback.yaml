@@ -1,0 +1,13 @@
+name: rollback deploy(on failure)
+
+on: 
+    push
+jobs:
+    deploy-job:
+        runs-on: "ubuntu-slim"
+        steps:
+            - name: deploying app
+              run: echo "deploying.." || false
+            - name: rollback deployment
+              if: failure()
+              run: echo "rollback is failed"

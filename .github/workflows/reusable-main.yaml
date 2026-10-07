@@ -2,7 +2,7 @@ name: node with resuable wf
 on: 
     push:
         branches:
-            - main
+            - qa
 permissions:
   security-events: write
 jobs:
