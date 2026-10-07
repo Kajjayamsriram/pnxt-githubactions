@@ -10,4 +10,4 @@ jobs:
               run: echo "deploying.." && false
             - name: rollback deployment
               if: failure()
-              run: echo "rollback is failed"
+              run: echo "rollback is successfull"
