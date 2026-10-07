@@ -1,0 +1,28 @@
+name: concurrent output
+
+on:
+    push:
+        branches:
+            - main
+concurrency:
+  group: main-deploy
+  cancel-in-progress: false
+
+jobs:
+    build-job: 
+        runs-on: ubuntu-slim
+        outputs:
+            tag: ${{ steps.tag-id.outputs.tag}}
+        steps:
+            - id: tag-id
+              run: echo "tag=v1.2" >> "$GITHUB_OUTPUT"
+            
+            - run: echo "Building myapp:${{ steps.tag-id.outputs.tag }}"
+    deploy-job:
+        needs: build-job
+        runs-on: ubuntu-slim
+        steps:
+            - run: echo "Deploying myapp:${{ needs.build-job.outputs.tag }}" 
+
+
+
